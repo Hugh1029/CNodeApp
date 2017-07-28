@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CNode</string>
+    <string name="exist">退出</string>
+    <string name="button_info_text">信息列表</string>
+    <string name="button_home_text">我的NODE</string>
+</resources>
