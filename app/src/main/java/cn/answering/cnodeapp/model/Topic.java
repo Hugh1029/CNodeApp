@@ -11,7 +11,9 @@ public class Topic {
     private String content;
     private String updateTime;
     private String CreateTime;
-    private int visit;
+    private String visit;
+    private String imageUrl;
+    private String author;
 
     public String getId() {
         return id;
@@ -53,11 +55,27 @@ public class Topic {
         CreateTime = createTime;
     }
 
-    public int getVisit() {
+    public String getVisit() {
         return visit;
     }
 
-    public void setVisit(int visit) {
+    public void setVisit(String visit) {
         this.visit = visit;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

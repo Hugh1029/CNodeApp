@@ -10,7 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,6 +90,12 @@ public class InfoFragment extends Fragment {
                         topic.setId(top.getString("id"));
                         topic.setContent(top.getString("content"));
                         topic.setTitle(top.getString("title"));
+                        topic.setUpdateTime(top.getString("last_reply_at"));
+                        topic.setCreateTime(top.getString("create_at"));
+                        topic.setVisit(top.getString("visit_count"));
+                        JSONObject ahthorInfo = new JSONObject(top.getString("author"));
+                        topic.setImageUrl(ahthorInfo.getString("avatar_url"));
+                        topic.setAuthor(ahthorInfo.getString("loginname"));
                         topicList.add(topic);
                     }
                     handler.sendEmptyMessage(GET_NODEDATA_SUCCESS);
@@ -118,15 +127,28 @@ public class InfoFragment extends Fragment {
      *
      */
     private class TopicViewHolder extends RecyclerView.ViewHolder{
-        private TextView textView;
+        private TextView textTitle;
+        private ImageView photoView;
+        private TextView viewNumber;
         public TopicViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.testView);
+            textTitle = (TextView) itemView.findViewById(R.id.info_title);
+            photoView = (ImageView) itemView.findViewById(R.id.image_view);
+            viewNumber = (TextView) itemView.findViewById(R.id.visit_number);
         }
 
-        //the function is bind data to view
+        /**
+         * the function is bind data to view
+         * Picasso is load photo from internet
+         */
+
         public void bindTopicItem(Topic topic){
-            textView.setText(topic.getTitle());
+            textTitle.setText(topic.getTitle());
+            viewNumber.setText(topic.getVisit());
+            Picasso.with(getActivity())
+                    .load(topic.getImageUrl())
+                    .resize(40,40)
+                    .into(photoView);
         }
     }
 

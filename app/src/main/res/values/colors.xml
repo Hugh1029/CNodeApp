@@ -6,4 +6,5 @@
     <color name="imageButtonBorder">#bfbfbf</color>
     <color name="backgroundColor">#555</color>
     <color name="textColorPressed">#f34343</color>
+    <color name="whiteColor">#90ffffff</color>
 </resources>
