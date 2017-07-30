@@ -26,7 +26,7 @@ public class PermissionManager {
      * @param listener  如果申请的权限已经同意，调用监听中相应的函数
      * @param permissions   申请的权限列表
      */
-    public void perssionManagerRequest(Object object,int requestCode,PermissionManagerListener listener,String... permissions ){
+    public void permissionManagerRequest(Object object,int requestCode,PermissionManagerListener listener,String... permissions ){
         List<String> permissionsList = new ArrayList<String>();
         Activity act = getActivity(object);
 
